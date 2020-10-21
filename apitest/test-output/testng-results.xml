@@ -1,37 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18172" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:56Z">
+  <suite name="Default suite" duration-ms="6841" started-at="2020-10-21T16:21:22Z" finished-at="2020-10-21T16:21:29Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18172" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:56Z">
-      <class name="restAssured.apitest.PetstoreUserApiTest">
-        <test-method status="PASS" signature="createUserArrayList()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="createUserArrayList" is-config="true" duration-ms="6074" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:44Z">
+    <test name="Default test" duration-ms="6841" started-at="2020-10-21T16:21:22Z" finished-at="2020-10-21T16:21:29Z">
+      <class name="restAssured.apitest.PetTest">
+        <test-method status="PASS" signature="CreatePet()[pri:0, instance:restAssured.apitest.PetTest@d8355a8]" name="CreatePet" duration-ms="6764" started-at="2020-10-21T16:21:22Z" finished-at="2020-10-21T16:21:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createUserArrayList -->
-        <test-method status="PASS" signature="CreateUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="CreateUser" duration-ms="2539" started-at="2020-10-18T07:42:44Z" finished-at="2020-10-18T07:42:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CreateUser -->
-        <test-method status="PASS" signature="deleteUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="deleteUser" duration-ms="2480" started-at="2020-10-18T07:42:47Z" finished-at="2020-10-18T07:42:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- deleteUser -->
-        <test-method status="PASS" signature="getuser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="getuser" duration-ms="2554" started-at="2020-10-18T07:42:49Z" finished-at="2020-10-18T07:42:52Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getuser -->
-        <test-method status="PASS" signature="loginUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="loginUser" duration-ms="2553" started-at="2020-10-18T07:42:52Z" finished-at="2020-10-18T07:42:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginUser -->
-        <test-method status="PASS" signature="logoutUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="logoutUser" duration-ms="1919" started-at="2020-10-18T07:42:54Z" depends-on-methods="restAssured.apitest.PetstoreUserApiTest.loginUser" finished-at="2020-10-18T07:42:56Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logoutUser -->
-      </class> <!-- restAssured.apitest.PetstoreUserApiTest -->
+        </test-method> <!-- CreatePet -->
+      </class> <!-- restAssured.apitest.PetTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
