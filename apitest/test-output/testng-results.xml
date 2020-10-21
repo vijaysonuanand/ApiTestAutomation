@@ -2,32 +2,36 @@
 <testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="12251" started-at="2020-10-07T07:52:12Z" finished-at="2020-10-07T07:52:25Z">
+  <suite name="Default suite" duration-ms="18172" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:56Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="12251" started-at="2020-10-07T07:52:12Z" finished-at="2020-10-07T07:52:25Z">
-      <class name="restAssured.apitest.PetstoreApi">
-        <test-method status="PASS" signature="createUserArrayList()[pri:1, instance:restAssured.apitest.PetstoreApi@61832929]" name="createUserArrayList" duration-ms="5156" started-at="2020-10-07T07:52:13Z" finished-at="2020-10-07T07:52:18Z">
+    <test name="Default test" duration-ms="18172" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:56Z">
+      <class name="restAssured.apitest.PetstoreUserApiTest">
+        <test-method status="PASS" signature="createUserArrayList()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="createUserArrayList" is-config="true" duration-ms="6074" started-at="2020-10-18T07:42:38Z" finished-at="2020-10-18T07:42:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUserArrayList -->
-        <test-method status="PASS" signature="getuser()[pri:2, instance:restAssured.apitest.PetstoreApi@61832929]" name="getuser" duration-ms="1749" started-at="2020-10-07T07:52:18Z" finished-at="2020-10-07T07:52:19Z">
+        <test-method status="PASS" signature="CreateUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="CreateUser" duration-ms="2539" started-at="2020-10-18T07:42:44Z" finished-at="2020-10-18T07:42:47Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getuser -->
-        <test-method status="PASS" signature="loginUser()[pri:3, instance:restAssured.apitest.PetstoreApi@61832929]" name="loginUser" duration-ms="1671" started-at="2020-10-07T07:52:19Z" finished-at="2020-10-07T07:52:21Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginUser -->
-        <test-method status="PASS" signature="logoutUser()[pri:4, instance:restAssured.apitest.PetstoreApi@61832929]" name="logoutUser" duration-ms="1672" started-at="2020-10-07T07:52:21Z" finished-at="2020-10-07T07:52:23Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logoutUser -->
-        <test-method status="PASS" signature="deleteUser()[pri:5, instance:restAssured.apitest.PetstoreApi@61832929]" name="deleteUser" duration-ms="1909" started-at="2020-10-07T07:52:23Z" finished-at="2020-10-07T07:52:25Z">
+        </test-method> <!-- CreateUser -->
+        <test-method status="PASS" signature="deleteUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="deleteUser" duration-ms="2480" started-at="2020-10-18T07:42:47Z" finished-at="2020-10-18T07:42:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteUser -->
-      </class> <!-- restAssured.apitest.PetstoreApi -->
+        <test-method status="PASS" signature="getuser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="getuser" duration-ms="2554" started-at="2020-10-18T07:42:49Z" finished-at="2020-10-18T07:42:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getuser -->
+        <test-method status="PASS" signature="loginUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="loginUser" duration-ms="2553" started-at="2020-10-18T07:42:52Z" finished-at="2020-10-18T07:42:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginUser -->
+        <test-method status="PASS" signature="logoutUser()[pri:0, instance:restAssured.apitest.PetstoreUserApiTest@ae45eb6]" name="logoutUser" duration-ms="1919" started-at="2020-10-18T07:42:54Z" depends-on-methods="restAssured.apitest.PetstoreUserApiTest.loginUser" finished-at="2020-10-18T07:42:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logoutUser -->
+      </class> <!-- restAssured.apitest.PetstoreUserApiTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

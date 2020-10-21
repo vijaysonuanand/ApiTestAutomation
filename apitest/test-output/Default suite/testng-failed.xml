@@ -5,7 +5,7 @@
     <classes>
       <class name="restAssured.apitest.PetstoreApi">
         <methods>
-          <include name="deleteUser"/>
+          <include name="getuser"/>
         </methods>
       </class> <!-- restAssured.apitest.PetstoreApi -->
     </classes>

@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import static io.restassured.RestAssured.*;
-public class PetstoreApi {
+public class PetstoreUserApiTest {
 
-	String user1="vijayanand4";
-	String user2="vijayanand5";
+	String user1="vijayanand6";
+	String user2="vijayanand7";
 	String password1="123457";
 	String password2="345678";
 	
 	
-	@Test(priority=1, enabled=true)
+	List<Map<String,Object>> jsonArrayPayload = new ArrayList<>();
+	
+	@BeforeTest
 	public void createUserArrayList()
 	{
 		Map<String,Object> user = new HashMap<String,Object>();
@@ -42,12 +45,25 @@ public class PetstoreApi {
 		user1.put("phone", "1234567891");
 		user1.put("userStatus", 11);
 		
-		List<Map<String,Object>> jsonArrayPayload = new ArrayList<>();
 		
 		jsonArrayPayload.add(user);
 		jsonArrayPayload.add(user1);
+	
 		
-		//GIVEN
+		RestAssured.baseURI="https://petstore.swagger.io";
+		   given()
+			  .contentType(ContentType.JSON)
+			  .body(jsonArrayPayload)
+			  .log()
+			  .all()
+		
+		   .when()
+			   .post("v2/user/createWithArray");
+		
+	}
+	
+	@Test
+	public void CreateUser() {
 		
 		RestAssured.baseURI="https://petstore.swagger.io";
 		   given()
@@ -64,10 +80,9 @@ public class PetstoreApi {
 			   .statusCode(200)
 			   .log()
 			   .all();
-		
 	}
 	
-	@Test(priority=2)
+	@Test
 	public void getuser()
 	{
 		
@@ -80,7 +95,7 @@ public class PetstoreApi {
 			  .all()
 		// WHEN
 		   .when()
-			   .get("user/user1")
+			   .get("user/vijayanand7")
 		// THEN
 		   .then()
 			   .assertThat()
@@ -93,7 +108,7 @@ public class PetstoreApi {
 	// https://petstore.swagger.io/v2/user/login?username=vijayanand1&password=12345
 	
 	
-	@Test(priority=3)
+	@Test
 	public void loginUser()
 	{
 		
@@ -118,7 +133,7 @@ public class PetstoreApi {
 		
 	}
 	
-	@Test(priority=4)
+	@Test(dependsOnMethods= "loginUser")
 	public void logoutUser()
 	{
 		
@@ -144,7 +159,7 @@ public class PetstoreApi {
 	
 	//https://petstore.swagger.io/v2/user/vijayanand1
 	
-	@Test(priority=5)
+	@Test
 	public void deleteUser()
 	{
 		
