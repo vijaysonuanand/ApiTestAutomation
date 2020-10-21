@@ -71,10 +71,10 @@ public class PetstoreUserApiTest {
 			  .body(jsonArrayPayload)
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .post("v2/user/createWithArray")
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
@@ -86,17 +86,17 @@ public class PetstoreUserApiTest {
 	public void getuser()
 	{
 		
-		//GIVEN
+		
 		RestAssured
 		   .given()
 			  .baseUri("https://petstore.swagger.io/v2")
 			  .header("Content-Type","application/json")
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .get("user/vijayanand7")
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
@@ -110,7 +110,7 @@ public class PetstoreUserApiTest {
 	public void loginUser()
 	{
 		
-		//GIVEN
+		
 		RestAssured
 		   .given()
 			  .baseUri("https://petstore.swagger.io/v2/user/login")
@@ -119,10 +119,10 @@ public class PetstoreUserApiTest {
 			  .queryParam("password", password1)
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .get()
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
@@ -135,17 +135,17 @@ public class PetstoreUserApiTest {
 	public void logoutUser()
 	{
 		
-		//GIVEN
+		
 		RestAssured
 		   .given()
 			  .baseUri("https://petstore.swagger.io/v2/user/logout")
 			  .contentType(ContentType.JSON)
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .get()
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
@@ -160,17 +160,17 @@ public class PetstoreUserApiTest {
 	public void deleteUser()
 	{
 		
-		//GIVEN
+		
 		RestAssured
 		   .given()
 			  .baseUri("https://petstore.swagger.io/v2/user")
 			  .contentType(ContentType.JSON)
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .delete(user1)
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)

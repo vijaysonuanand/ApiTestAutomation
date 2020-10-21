@@ -27,20 +27,17 @@ public class StoreTest {
 			  .body(jsonArrayPayload)
 			  .log()
 			  .all()
-		// WHEN
+		
 		   .when()
 			   .post("v2/store/order")
-		// THEN
+		
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
 			   .log()
 			   .all();
 	}
-	
-	
-	
-	
+
 	
 }
 

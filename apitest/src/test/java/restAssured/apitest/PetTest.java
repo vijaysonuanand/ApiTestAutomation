@@ -35,19 +35,15 @@ public class PetTest {
 			  .body(jsonArrayPayload)
 			  .log()
 			  .all()
-		// WHEN
+
 		   .when()
 			   .post("v2/pet")
-		// THEN
+
 		   .then()
 			   .assertThat()
 			   .statusCode(200)
 			   .log()
 			   .all();
 	}
-	
-	
-	
-	
 	
 }
