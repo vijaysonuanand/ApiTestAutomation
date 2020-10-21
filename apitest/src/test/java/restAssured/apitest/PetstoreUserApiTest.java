@@ -105,8 +105,6 @@ public class PetstoreUserApiTest {
 		
 	}
 	
-	// https://petstore.swagger.io/v2/user/login?username=vijayanand1&password=12345
-	
 	
 	@Test
 	public void loginUser()
@@ -157,7 +155,6 @@ public class PetstoreUserApiTest {
 	}
 	
 	
-	//https://petstore.swagger.io/v2/user/vijayanand1
 	
 	@Test
 	public void deleteUser()
