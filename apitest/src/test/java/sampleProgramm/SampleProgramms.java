@@ -100,12 +100,11 @@ public class SampleProgramms {
         HashMap<Integer, Integer> distinct = new HashMap<>();
 
         for (int i = 0; i < arr.length; i++) {
-            if (!distinct.containsKey(arr[i]))
+            distinct.put(arr[i], distinct.getOrDefault(arr[i],0)+1);
+            /*if (!distinct.containsKey(arr[i]))
                 distinct.put(arr[i], 1);
-
             else
-                distinct.put(arr[i], distinct.get(arr[i]) + 1);
-
+                distinct.put(arr[i], distinct.get(arr[i]) + 1);*/
         }
 
         for (Map.Entry<Integer, Integer> entry : distinct.entrySet()) {
@@ -116,9 +115,11 @@ public class SampleProgramms {
 
     @Test
     public void findFirstNonRepeatedChar() {
-        String str = "abuabskjundhskl";
+        String str = "askdjhkurskjdbbuabskjundhskl";
         char ch = findNonRepeatedCharUsingMap(str);
+        char ch1 = findNonRepeatedChar(str);
         System.out.println(" first unique character is :" + ch);
+        System.out.println("Another way first unique character is :" + ch1);
     }
 
     public Character findNonRepeatedChar(String str) {
@@ -156,7 +157,7 @@ public class SampleProgramms {
         for (char ch : str.toCharArray()) {
             charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
         }
-        System.out.println("All char counts are " + charCount);
+        //System.out.println("All char counts are " + charCount);
         for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
             if (entry.getValue() == 1) {
                 return entry.getKey();
