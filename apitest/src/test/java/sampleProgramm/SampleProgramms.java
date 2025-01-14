@@ -169,7 +169,7 @@ public class SampleProgramms {
     @Test
     public void sorting() {
 
-        /*List<String> list = Arrays.asList("Ab", "s", "h", "c", "p");
+        List<String> list = Arrays.asList("Ab", "s", "h", "c", "p");
 
         List<String> sortedList = list.stream().sorted().collect(Collectors.toList());
         sortedList.forEach(System.out::println);
@@ -180,7 +180,7 @@ public class SampleProgramms {
         sortedList2.forEach(System.out::println);
         Collections.sort(list);
         Collections.sort(list, Collections.reverseOrder());
-        list.forEach(System.out::println);*/
+        list.forEach(System.out::println);
 
         List<User> userList = Arrays.asList(new User(1, "Ram"),
                 new User(2, "zjjdh"),
@@ -268,6 +268,138 @@ public class SampleProgramms {
             }
         }
         return permutation;
+    }
+
+
+    @Test
+    public void removeDuplicateFromArray(){
+        int [] arr = {1,2,3,1,2,4,2,3,4,2,};
+        ArrayList<Integer> seen = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for(int i=0;i<arr.length; i++){
+            int x= arr[i];
+            if(seen.contains(x))
+                continue;
+            else {
+                result.add(x);
+                seen.add(x);
+            }
+
+        }
+       result.stream().forEach(System.out::println);
+
+    }
+
+    @Test
+    public void diamondStar(){
+
+        int n=5;
+        for(int i=1; i<=n; i++){
+            for(int j = n-i; j>=1; j--){
+                System.out.printf(" ");
+            }
+            for(int k=1; k<=i; k++){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+        for(int i=1; i<=n-1; i++){
+            for(int j = 1; j<=i; j++){
+                System.out.printf(" ");
+            }
+            for(int k=n-i; k>=1; k--){
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+
+    @Test
+    public void denseDiamondStar(){
+
+        int n=5;
+        for(int i=1; i<=n; i++){
+            for(int j = n-i; j>=1; j--){
+                System.out.printf(" ");
+            }
+            for(int k=1; k<=(2*i-1); k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        for(int i=1; i<=n-1; i++){
+            for(int j = 1; j<=i; j++){
+                System.out.printf(" ");
+            }
+            for(int k=2*(n-i)-1; k>=1; k--){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+
+@Test
+    public void hollowPyramid(){
+    int n = 5; // Number of rows
+
+    for (int i = 1; i <= n; i++) {
+        // Print leading spaces
+        for (int j = n; j > i; j--) {
+            System.out.print(" ");
+        }
+
+        // Print stars and spaces to form the hollow part
+        for (int k = 1; k <= (2 * i - 1); k++) {
+            if (k == 1 || k == (2 * i - 1) || i == n) {
+                System.out.print("*"); // Print stars at the boundary
+            } else {
+                System.out.print(" "); // Print spaces in the middle
+            }
+        }
+
+        // Move to the next line
+        System.out.println();
+    }
+}
+
+@Test
+public void palindrome(){
+        String str = "madamsir";
+        boolean result = true;
+        for(int i=0;i<str.length()/2; i++){
+            if(str.charAt(i)!=str.charAt(str.length()-1-i)){
+                result=false;
+                break;
+            }
+        }
+        if(result)
+            System.out.println("String "+ str +" is palindrome");
+        else
+            System.out.println("String "+ str +" is not palindrome");
+    }
+
+    @Test
+    public void LinkedListeTest(){
+        LinkedList list = new LinkedList();
+
+        // Add elements to the list
+        list.add(10);
+        list.add(20);
+        list.add(30);
+
+        // Display the list
+        System.out.println("Linked List:");
+        list.forEach(x->System.out.println(x));
+
+        // Delete a node
+        System.out.println("Deleting 20:");
+        list.remove(1);
+
+        // Display after deletion
+        list.forEach(x->System.out.println(x));
     }
 
 }

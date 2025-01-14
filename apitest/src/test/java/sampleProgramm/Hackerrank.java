@@ -99,13 +99,16 @@ public class Hackerrank {
 
 
     public int maxSubArray(int[] nums) {
-        int ans = nums[0];
-        int f = nums[0];
+        int maxSum = nums[0];
+        int currentSum = nums[0];
         for (int i = 1; i < nums.length; ++i) {
-            f = Math.max(f, 0) + nums[i];
-            ans = Math.max(ans, f);
+            // Update the current sum: either include the current number
+            // in the running sum or start a new subarray from the current number
+          //  currentSum = Math.max(currentSum, 0) + nums[i];
+            currentSum = Math.max((currentSum+nums[i]), nums[i]);
+            maxSum = Math.max(maxSum, currentSum);
         }
-        return ans;
+        return maxSum;
     }
 
 

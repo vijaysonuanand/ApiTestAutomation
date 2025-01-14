@@ -16,13 +16,13 @@ public class TestInherit {
 
         Parent p1 = new Child();
         p1.test();
-        p1.testParent();
+        p1.testParent();// with parent reference we can call only parent class methods not child class methods except overriden
         System.out.println("calling variable with parent - new child reference : " + p1.parentId + " " + p1.parentName + " "+ p1.common);
 
         System.out.println("=================================");
         Child c1 = new Child();
         c1.test();
-        c1.testParent();
+        c1.testParent(); // with child class reference we can call both child or parent method and data too
         c1.testChild();
         System.out.println("calling parent variable with  child reference : " + c1.parentId + " " + c1.parentName +" " + c1.common);
         System.out.println("calling child  variable with  child reference : " + c1.childId + " " + c1.childName);
