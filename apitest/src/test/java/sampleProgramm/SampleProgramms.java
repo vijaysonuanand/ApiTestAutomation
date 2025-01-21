@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import java.io.InputStream;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SampleProgramms {
@@ -100,7 +101,7 @@ public class SampleProgramms {
         HashMap<Integer, Integer> distinct = new HashMap<>();
 
         for (int i = 0; i < arr.length; i++) {
-            distinct.put(arr[i], distinct.getOrDefault(arr[i],0)+1);
+            distinct.put(arr[i], distinct.getOrDefault(arr[i], 0) + 1);
             /*if (!distinct.containsKey(arr[i]))
                 distinct.put(arr[i], 1);
             else
@@ -272,14 +273,14 @@ public class SampleProgramms {
 
 
     @Test
-    public void removeDuplicateFromArray(){
-        int [] arr = {1,2,3,1,2,4,2,3,4,2,};
+    public void removeDuplicateFromArray() {
+        int[] arr = {1, 2, 3, 1, 2, 4, 2, 3, 4, 2,};
         ArrayList<Integer> seen = new ArrayList<>();
         ArrayList<Integer> result = new ArrayList<>();
 
-        for(int i=0;i<arr.length; i++){
-            int x= arr[i];
-            if(seen.contains(x))
+        for (int i = 0; i < arr.length; i++) {
+            int x = arr[i];
+            if (seen.contains(x))
                 continue;
             else {
                 result.add(x);
@@ -287,28 +288,28 @@ public class SampleProgramms {
             }
 
         }
-       result.stream().forEach(System.out::println);
+        result.stream().forEach(System.out::println);
 
     }
 
     @Test
-    public void diamondStar(){
+    public void diamondStar() {
 
-        int n=5;
-        for(int i=1; i<=n; i++){
-            for(int j = n-i; j>=1; j--){
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = n - i; j >= 1; j--) {
                 System.out.printf(" ");
             }
-            for(int k=1; k<=i; k++){
+            for (int k = 1; k <= i; k++) {
                 System.out.print("* ");
             }
             System.out.println();
         }
-        for(int i=1; i<=n-1; i++){
-            for(int j = 1; j<=i; j++){
+        for (int i = 1; i <= n - 1; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.printf(" ");
             }
-            for(int k=n-i; k>=1; k--){
+            for (int k = n - i; k >= 1; k--) {
                 System.out.print("* ");
             }
             System.out.println();
@@ -317,23 +318,23 @@ public class SampleProgramms {
 
 
     @Test
-    public void denseDiamondStar(){
+    public void denseDiamondStar() {
 
-        int n=5;
-        for(int i=1; i<=n; i++){
-            for(int j = n-i; j>=1; j--){
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = n - i; j >= 1; j--) {
                 System.out.printf(" ");
             }
-            for(int k=1; k<=(2*i-1); k++){
+            for (int k = 1; k <= (2 * i - 1); k++) {
                 System.out.print("*");
             }
             System.out.println();
         }
-        for(int i=1; i<=n-1; i++){
-            for(int j = 1; j<=i; j++){
+        for (int i = 1; i <= n - 1; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.printf(" ");
             }
-            for(int k=2*(n-i)-1; k>=1; k--){
+            for (int k = 2 * (n - i) - 1; k >= 1; k--) {
                 System.out.print("*");
             }
             System.out.println();
@@ -341,48 +342,48 @@ public class SampleProgramms {
     }
 
 
-@Test
-    public void hollowPyramid(){
-    int n = 5; // Number of rows
+    @Test
+    public void hollowPyramid() {
+        int n = 5; // Number of rows
 
-    for (int i = 1; i <= n; i++) {
-        // Print leading spaces
-        for (int j = n; j > i; j--) {
-            System.out.print(" ");
-        }
-
-        // Print stars and spaces to form the hollow part
-        for (int k = 1; k <= (2 * i - 1); k++) {
-            if (k == 1 || k == (2 * i - 1) || i == n) {
-                System.out.print("*"); // Print stars at the boundary
-            } else {
-                System.out.print(" "); // Print spaces in the middle
+        for (int i = 1; i <= n; i++) {
+            // Print leading spaces
+            for (int j = n; j > i; j--) {
+                System.out.print(" ");
             }
+
+            // Print stars and spaces to form the hollow part
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                if (k == 1 || k == (2 * i - 1) || i == n) {
+                    System.out.print("*"); // Print stars at the boundary
+                } else {
+                    System.out.print(" "); // Print spaces in the middle
+                }
+            }
+
+            // Move to the next line
+            System.out.println();
         }
-
-        // Move to the next line
-        System.out.println();
     }
-}
 
-@Test
-public void palindrome(){
+    @Test
+    public void palindrome() {
         String str = "madamsir";
         boolean result = true;
-        for(int i=0;i<str.length()/2; i++){
-            if(str.charAt(i)!=str.charAt(str.length()-1-i)){
-                result=false;
+        for (int i = 0; i < str.length() / 2; i++) {
+            if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+                result = false;
                 break;
             }
         }
-        if(result)
-            System.out.println("String "+ str +" is palindrome");
+        if (result)
+            System.out.println("String " + str + " is palindrome");
         else
-            System.out.println("String "+ str +" is not palindrome");
+            System.out.println("String " + str + " is not palindrome");
     }
 
     @Test
-    public void LinkedListeTest(){
+    public void LinkedListeTest() {
         LinkedList list = new LinkedList();
 
         // Add elements to the list
@@ -392,14 +393,102 @@ public void palindrome(){
 
         // Display the list
         System.out.println("Linked List:");
-        list.forEach(x->System.out.println(x));
+        list.forEach(x -> System.out.println(x));
 
         // Delete a node
         System.out.println("Deleting 20:");
         list.remove(1);
 
         // Display after deletion
-        list.forEach(x->System.out.println(x));
+        list.forEach(x -> System.out.println(x));
     }
 
+
+    @Test
+    public void mergeSortArray() {
+        int[] array1 = {1, 3, 5, 7};
+        int[] array2 = {2, 4, 6, 8};
+
+        int[] mergedArray = mergeSortedArrays(array1, array2);
+
+        // Print the merged array
+        System.out.print("Merged Array: ");
+        for (int num : mergedArray) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public int[] mergeSortedArrays(int[] array1, int[] array2) {
+
+        // Using stream API
+        int[] mergedArray1 = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2))
+                .sorted()
+                .toArray();
+        //return  mergedArray1;
+        //=================================================
+
+
+        int length1 = array1.length;
+        int length2 = array2.length;
+        int[] mergedArray = new int[length1 + length2];
+
+        int i = 0, j = 0, k = 0;
+
+        // Merge arrays until one is exhausted
+        while (i < length1 && j < length2) {
+            if (array1[i] <= array2[j]) {
+                mergedArray[k++] = array1[i++];
+            } else {
+                mergedArray[k++] = array2[j++];
+            }
+        }
+
+        // Copy remaining elements from array1, if any
+        while (i < length1) {
+            mergedArray[k++] = array1[i++];
+        }
+
+        // Copy remaining elements from array2, if any
+        while (j < length2) {
+            mergedArray[k++] = array2[j++];
+        }
+
+        return mergedArray;
+    }
+
+    @Test
+    public void findnthPrimeNumber() {
+        int n = 5;
+        int count = 0;
+        int num = 1;
+        int i;
+        while (count < n) {
+            num++;
+            for (i = 2; i <= num; i++) {
+                if (num % i == 0)
+                    break;
+            }
+            if (i == num)
+                count++;
+        }
+        System.out.println(n + "th prime number is :" + num);
+    }
+
+    @Test
+    public void primeNumberInRange() {
+
+        int num = 5;
+        int n = 17;
+        int j = 0;
+        while (num < n) {
+
+            for (j = 2; j <= num; j++) {
+                if (num % j == 0)
+                    break;
+            }
+            if (j == num)
+                System.out.println(" next prime number is : " + num);
+            num++;
+        }
+    }
 }
