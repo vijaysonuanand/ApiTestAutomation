@@ -383,7 +383,7 @@ public class SampleProgramms {
     }
 
     @Test
-    public void LinkedListeTest() {
+    public void LinkedListTest() {
         LinkedList list = new LinkedList();
 
         // Add elements to the list
@@ -491,4 +491,116 @@ public class SampleProgramms {
             num++;
         }
     }
+
+    @Test
+    public void reverseEachWordOfString() {
+        String str = "this is main string";
+
+        String[] arr = str.split(" ");
+        String reversed = Arrays.stream(arr).map(x -> new StringBuilder(x).reverse().toString()).collect(Collectors.joining(" "));
+        System.out.println(reversed);
+    }
+
+    public String reverseString(String str) {
+        StringBuilder sb = new StringBuilder(str);
+        for (int i = str.length() - 1; i >= 0; i--) {
+            sb.append(str.charAt(i));
+        }
+        return sb.toString();
+    }
+
+
+    @Test
+    public void printFibonacciSeries() {
+        int n = 10;
+        int first = 0;
+        int second = 1;
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i <= 1) {
+                System.out.println(i + " ");
+            } else {
+                System.out.println(first + " ");
+                sum = first + second;
+                first = second;
+                second = sum;
+
+            }
+        }
+    }
+
+    @Test
+    public void PrintFibonacciUsingRecursion() {
+
+        int n = 10;
+        int i = 0;
+        while (i < n) {
+            System.out.println(findNthFibonacci(i) + " ");
+            i++;
+        }
+
+        int fibonacciNumber = findNthFibonacci(n);
+
+        System.out.println(n + "th fibonacci number is : " + fibonacciNumber);
+    }
+
+    public int findNthFibonacci(int n) {
+        if (n <= 1)
+            return n;
+        else
+            return findNthFibonacci(n - 1) + findNthFibonacci(n - 2);
+
+    }
+
+    @Test
+    public void findSumOfDigit() {
+        int num = 1234;
+        int sum = 0;
+
+        while (num > 0) {
+
+            int rem = num % 10;
+            sum = sum + rem;
+            num = num / 10;
+
+        }
+        System.out.print("Sum of all the digits are : " + sum);
+    }
+
+    @Test
+    public void bubbleShort(){
+        //ascending
+        int [] numbers = {8,1,4,2,3,5,7,-2};
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i+1 ; j <=numbers.length - 1; j++) {
+                if (numbers[j] < numbers[i]) {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[i];
+                    numbers[i] = temp;
+                }
+            }
+        }
+
+        System.out.println("sorted array is : "+ Arrays.toString(numbers));
+    }
+
+    @Test
+    public void bubbleShortReverse(){
+        //decending
+        int [] numbers = {-5,8,1,4,2,3,5,7,-2,9};
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i+1 ; j <=numbers.length - 1; j++) {
+                if (numbers[j] > numbers[i]) {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[i];
+                    numbers[i] = temp;
+                }
+            }
+        }
+
+        System.out.println("sorted array is : "+ Arrays.toString(numbers));
+    }
 }
+
+
