@@ -24,7 +24,7 @@ public class FirstTest extends BaseTest {
         System.out.println("starting the first test 1");
         driver.get("https://www.redbus.in/");
         Thread.sleep(2000);
-        System.out.println("current url is : "+ driver.getTitle());
+        System.out.println("current url for verify title is : "+ driver.getTitle());
 
     }
     @Test
@@ -32,7 +32,7 @@ public class FirstTest extends BaseTest {
         System.out.println("starting the first test 2");
         driver.get("https://www.redbus.in/");
         Thread.sleep(2000);
-        System.out.println("current url is : "+ driver.getTitle());
+        System.out.println("current url for verify title 2 is : "+ driver.getTitle());
 
     }
 

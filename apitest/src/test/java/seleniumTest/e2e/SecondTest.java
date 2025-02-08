@@ -21,7 +21,7 @@ public class SecondTest extends BaseTest {
     public void VerifyCurrentUrl() {
         driver.get("https://www.redbus.in/");
         System.out.println("starting the second test");
-        System.out.println("current url is : "+ driver.getCurrentUrl());
+        System.out.println("current url for second test is : "+ driver.getCurrentUrl());
 
     }
 
