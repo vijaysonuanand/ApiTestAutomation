@@ -116,7 +116,7 @@ public class SampleProgramms {
 
     @Test
     public void findFirstNonRepeatedChar() {
-        String str = "askdjhkurskjdbbuabskjundhskl";
+        String str = "askdjhkurskjdbbuabpskjundhskl";
         char ch = findNonRepeatedCharUsingMap(str);
         char ch1 = findNonRepeatedChar(str);
         System.out.println(" first unique character is :" + ch);
@@ -160,6 +160,7 @@ public class SampleProgramms {
         }
         //System.out.println("All char counts are " + charCount);
         for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            System.out.println("Character: " + entry.getKey() + ", Count: " + entry.getValue());
             if (entry.getValue() == 1) {
                 return entry.getKey();
             }
@@ -228,6 +229,25 @@ public class SampleProgramms {
 
         }
         System.out.println("longest non repeated subsrting length is " + maxlength);
+        System.out.println("longest non repeated subsrting is " + longestUniqueSubstring(str));
+    }
+
+    public static String longestUniqueSubstring(String s) {
+        Set<Character> seen = new HashSet<>();
+        int left = 0, right = 0, maxLen = 0, start = 0;
+
+        while (right < s.length()) {
+            if (!seen.contains(s.charAt(right))) {
+                seen.add(s.charAt(right++));
+                if (right - left > maxLen) {
+                    maxLen = right - left;
+                    start = left;
+                }
+            } else {
+                seen.remove(s.charAt(left++));
+            }
+        }
+        return s.substring(start, start + maxLen);
     }
 
 
@@ -601,6 +621,32 @@ public class SampleProgramms {
 
         System.out.println("sorted array is : "+ Arrays.toString(numbers));
     }
+
+    @Test
+    public void findlargestAndSmallestSUbstring(){
+        String s = "welcometojava";
+        int k = 3; // Length of the substring
+        String result = getSmallestAndLargest(s, k);
+        System.out.println(result);
+    }
+    public String getSmallestAndLargest(String s, int k) {
+        String smallest = s.substring(0, k);
+        String largest = s.substring(0, k);
+
+        for (int i = 1; i <= s.length() - k; i++) {
+            String substring = s.substring(i, i + k);
+            if (substring.compareTo(smallest) < 0) {
+                smallest = substring;
+            }
+            if (substring.compareTo(largest) > 0) {
+                largest = substring;
+            }
+        }
+        return smallest + "\n" + largest;
+    }
+
+
+
 }
 
 
