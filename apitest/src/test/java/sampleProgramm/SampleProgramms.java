@@ -1,10 +1,12 @@
 package sampleProgramm;
 
 import Pojo.User;
+import local.A;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -589,11 +591,11 @@ public class SampleProgramms {
     }
 
     @Test
-    public void bubbleShort(){
+    public void bubbleShort() {
         //ascending
-        int [] numbers = {8,1,4,2,3,5,7,-2};
+        int[] numbers = {8, 1, 4, 2, 3, 5, 7, -2};
         for (int i = 0; i < numbers.length - 1; i++) {
-            for (int j = i+1 ; j <=numbers.length - 1; j++) {
+            for (int j = i + 1; j <= numbers.length - 1; j++) {
                 if (numbers[j] < numbers[i]) {
                     int temp = numbers[j];
                     numbers[j] = numbers[i];
@@ -602,15 +604,15 @@ public class SampleProgramms {
             }
         }
 
-        System.out.println("sorted array is : "+ Arrays.toString(numbers));
+        System.out.println("sorted array is : " + Arrays.toString(numbers));
     }
 
     @Test
-    public void bubbleShortReverse(){
+    public void bubbleShortReverse() {
         //decending
-        int [] numbers = {-5,8,1,4,2,3,5,7,-2,9};
+        int[] numbers = {-5, 8, 1, 4, 2, 3, 5, 7, -2, 9};
         for (int i = 0; i < numbers.length - 1; i++) {
-            for (int j = i+1 ; j <=numbers.length - 1; j++) {
+            for (int j = i + 1; j <= numbers.length - 1; j++) {
                 if (numbers[j] > numbers[i]) {
                     int temp = numbers[j];
                     numbers[j] = numbers[i];
@@ -619,16 +621,17 @@ public class SampleProgramms {
             }
         }
 
-        System.out.println("sorted array is : "+ Arrays.toString(numbers));
+        System.out.println("sorted array is : " + Arrays.toString(numbers));
     }
 
     @Test
-    public void findlargestAndSmallestSUbstring(){
+    public void findlargestAndSmallestSUbstring() {
         String s = "welcometojava";
         int k = 3; // Length of the substring
         String result = getSmallestAndLargest(s, k);
         System.out.println(result);
     }
+
     public String getSmallestAndLargest(String s, int k) {
         String smallest = s.substring(0, k);
         String largest = s.substring(0, k);
@@ -645,8 +648,57 @@ public class SampleProgramms {
         return smallest + "\n" + largest;
     }
 
+    @Test
+    public void sortListInReverseOrder() {
+        List<String> list = Arrays.asList("apple", "banana", "cherry", "date", "elderberry");
 
+        list.sort((a, b) -> b.compareToIgnoreCase(a));
+        list.forEach(System.out::println);
 
+        // Using stream to sort in reverse order
+        List<String> sortedList = list.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        List<String> sortedList1 = list.stream()
+                .sorted(String::compareTo)
+                .collect(Collectors.toList());
+
+        sortedList1.forEach(System.out::println);
+
+        System.out.println("Sorted list in reverse order: " + sortedList);
+    }
+
+    @Test
+    public void findFirstNonRepeatedCharInString() {
+        String str = "hello worldh";
+        Map<Character, Integer> frequencyMap;
+
+       /* for (char ch : str.toCharArray()) {
+            frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);
+        }*/
+
+        //frequencyMap= str.chars().mapToObj(ch-> (char) ch).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting())); // Collectors.counting return Long format
+
+        frequencyMap = str.chars().mapToObj(ch -> (char) ch).collect(Collectors.groupingBy(ch -> ch, LinkedHashMap::new, Collectors.summingInt(ch -> 1)));
+
+        Optional<Character> firstNonRepeatedChar = frequencyMap.entrySet().stream().filter(x -> x.getValue() == 1).map(Map.Entry::getKey).findFirst();
+
+        if (firstNonRepeatedChar.isPresent()) {
+            System.out.println("First non-repeated character is: " + firstNonRepeatedChar.get());
+        } else {
+            System.out.println("No non-repeated character found.");
+        }
+    }
+
+    @Test
+    public void sortListOfSTringsOnLength() {
+        List<String> list = Arrays.asList("apple", "banana", "cherry", "date", "elderberry");
+
+        List<String> sortedList = list.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
+
+        System.out.println("Sorted list by length: " + sortedList);
+    }
 }
 
 
