@@ -215,14 +215,14 @@ public class SampleProgramms {
     @Test
     public void findLongestSubstringLength() {
 
-        String str = "abcabcbb";
+        String str = "dabcadbcbb";
 
         int left = 0, maxlength = 0;
         HashSet<Character> seen = new HashSet<>();
 
         for (int right = 0; right < str.length(); right++) {
             char ch = str.charAt(right);
-            if (seen.contains(ch)) {
+            while(seen.contains(ch)) {
                 seen.remove(str.charAt(left));
                 left++;
             }
@@ -543,11 +543,11 @@ public class SampleProgramms {
             if (i <= 1) {
                 System.out.println(i + " ");
             } else {
-                System.out.println(first + " ");
                 sum = first + second;
+
                 first = second;
                 second = sum;
-
+                System.out.println(sum + " ");
             }
         }
     }
@@ -699,6 +699,32 @@ public class SampleProgramms {
 
         System.out.println("Sorted list by length: " + sortedList);
     }
+
+    @Test
+    public void MaxStringConversionLength() {
+        String s = "acld";
+        String t = "bbdf";
+        int maxCost = 3;
+
+        int maxLength = getMaxLength(s, t, maxCost);
+        System.out.println("Maximum conversion length: " + maxLength);
+    }
+
+    public static int getMaxLength(String s, String t, int maxCost) {
+        int n = s.length();
+        int currentCost = 0;
+        int maxLength = 0;
+
+        for (int i = 0; i < n; i++) {
+            // Add cost of converting current char
+            currentCost += Math.abs(s.charAt(i) - t.charAt(i));
+
+            if (currentCost <= maxCost) {
+                maxLength = maxLength + 1;
+            } else {
+                return maxLength;
+            }
+        }
+        return maxLength;
+    }
 }
-
-
