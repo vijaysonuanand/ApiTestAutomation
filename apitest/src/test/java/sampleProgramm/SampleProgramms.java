@@ -217,7 +217,7 @@ public class SampleProgramms {
 
         String str = "dabcadbcbb";
 
-        int left = 0, maxlength = 0;
+        int left = 0, maxlength = 0,start=0;
         HashSet<Character> seen = new HashSet<>();
 
         for (int right = 0; right < str.length(); right++) {
@@ -228,10 +228,12 @@ public class SampleProgramms {
             }
             seen.add(str.charAt(right));
             maxlength = Math.max(maxlength, right - left + 1);
+            start = left;
 
         }
         System.out.println("longest non repeated subsrting length is " + maxlength);
         System.out.println("longest non repeated subsrting is " + longestUniqueSubstring(str));
+
     }
 
     public static String longestUniqueSubstring(String s) {
@@ -726,5 +728,94 @@ public class SampleProgramms {
             }
         }
         return maxLength;
+    }
+
+    @Test
+    public void findFirstNonRepeatedCharUsingStream() {
+        String str = "hello worldh";
+
+        Optional<Character> firstNonRepeatedChar = str.chars()
+                .mapToObj(ch -> (char) ch)
+                .collect(Collectors.groupingBy(ch -> ch, LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .findFirst();
+
+        firstNonRepeatedChar.ifPresentOrElse(
+                ch -> System.out.println("First non-repeated character is: " + ch),
+                () -> System.out.println("No non-repeated character found.")
+        );
+    }
+
+    @Test
+    public void findTheSecondHighestNumberFromList() {
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
+        // Using stream to find the second highest number
+        Optional<Integer> secondHighest = numbers.stream()
+                .sorted(Comparator.reverseOrder())
+                .distinct()
+                .skip(1)
+                .findFirst();
+
+        secondHighest.ifPresentOrElse(
+                num -> System.out.println("The second highest number is: " + num),
+                () -> System.out.println("There is no second highest number.")
+        );
+    }
+   @Test
+    public void findIPV4IsValid() {
+       /*String ipRegex = "^(?:(?:25[0-5]|2[0-4]\\d|1\\d{2}|0\\d{2}|\\d{1,2})\\.){3}"
+               + "(?:25[0-5]|2[0-4]\\d|1\\d{2}|0\\d{2}|\\d{1,2})$";*/
+
+       //String ipRegex = "^((25[0-5]|2[0-4]\\d|1\\d{2}|0?\\d{2}|\\d{1})(\\.|$)){4}";
+       String ipRegex = "^((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.|$)){4}";
+
+      /* 250-255- 25[0-5]
+         200-249- 2[0-4]\d
+         000-199- [01]?\d{1,2}*/
+       // String num = "([01]?\\d{1,2}|2[0-4]\\d|25[0-5])";
+       //String pattern = num + "." +  num + "." +  num + "." + num;
+
+       String[] testIPs = {
+               "192.168.0.1",   // valid
+               "255.255.255.255", // valid
+               "001.002.003.004", // valid (leading zeros allowed)
+               "256.100.50.25", // invalid
+               "192.168.0",     // invalid
+               "192.168.0.1.5", // invalid
+               "1234.12.12.12"  // invalid
+       };
+
+       for (String ip : testIPs) {
+           System.out.println(ip + " → " + ip.matches(ipRegex));
+       }
+
+    }
+
+    @Test
+    public void findConsecutiveNumbersInArray(){
+        int[] arr={1,2,3,5,6,7,8,10,11,12,13,14};
+        List<List<Integer>> result=new ArrayList<>();
+        List<Integer> tempList=new ArrayList<>();
+        Arrays.sort(arr);
+        for(int i=0;i<arr.length-1;i++){
+            if(arr[i]+1==arr[i+1]){
+                if(tempList.isEmpty()){
+                    tempList.add(arr[i]);
+                }
+                tempList.add(arr[i+1]);
+            }else{
+                if(!tempList.isEmpty()){
+                    result.add(new ArrayList<>(tempList));
+                    tempList.clear();
+                }
+            }
+        }
+        if(!tempList.isEmpty()){
+            result.add(new ArrayList<>(tempList));
+        }
+        System.out.println("Consecutive number sequences: " + result);
     }
 }
